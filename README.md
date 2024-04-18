@@ -1,6 +1,6 @@
 # fisheye_converter
  
-The simple application used for conversion of side by side fisheye vr videos into equirectangular. The app uses ffmpeg library under the hood and requires it to be installed your mashine. You can find ffmpeg installers on their official website: [https://ffmpeg.org/](https://ffmpeg.org/)
+The simple application creaded as a python training project. It's used for conversion of side by side fisheye vr videos into equirectangular format. The app uses ffmpeg library under the hood and requires it to be installed on your mashine. You can find ffmpeg installers on their official website: [https://ffmpeg.org/](https://ffmpeg.org/)
 
 Since the conversion process might took some time the app is made the way that it allows to continue interruped conversion without losing progress. For simplyfying whole process the simple GUI was created with the use of customtkinter.
 
