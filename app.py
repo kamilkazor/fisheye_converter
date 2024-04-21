@@ -59,7 +59,7 @@ class NewConversionTab(customtkinter.CTkFrame):
         self.input_video_path_var = customtkinter.StringVar()
         self.output_directory_path_var = customtkinter.StringVar()
         self.fov_var = customtkinter.StringVar()
-        self.fov_var.set(180)
+        self.fov_var.set(190)
 
         # Video file selection
         self.input_video_frame = customtkinter.CTkFrame(master=self)
