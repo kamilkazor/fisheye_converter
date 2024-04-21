@@ -1,3 +1,4 @@
+import atexit
 import datetime
 import glob
 import os
@@ -45,6 +46,9 @@ class Converter:
         self.path_to_conversion_dir = None
         self.fov = None
         self.video_name = None
+
+        self.current_process = None
+        atexit.register(self.__cleanup)
 
     def check_path_to_input_video(self, path_to_input_video: str) -> bool:
         """
@@ -372,13 +376,22 @@ class Converter:
             command (str): Command to run
         """
 
-        subprocess.run(
+        self.current_process = subprocess.Popen(
             command,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
-            check=True,
-            creationflags=subprocess.CREATE_NO_WINDOW,
+            # check=True,
+            shell=False,
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+            | subprocess.CREATE_NO_WINDOW,
         )
+        self.current_process.wait()
+
+    def __cleanup(self):
+        """
+        Stops the current subprocess
+        """
+        self.current_process.terminate()
 
     def __remove_file(self, path: str):
         """
